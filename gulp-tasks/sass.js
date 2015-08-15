@@ -6,7 +6,7 @@ var options = require('../_shared/options.js');
 
 module.exports = function() {
   gulp.task('sass', function() {
-    gulp.src('_sites/' + options.project + '/src/assets/sass/*.sass')
+    gulp.src(options.src.sass)
       .pipe(plugins.sourcemaps.init())
       .pipe(plugins.sass().on('error', function (err) {
         plugins.notify().write({
@@ -15,6 +15,6 @@ module.exports = function() {
         });
       }))
       .pipe(plugins.sourcemaps.write())
-      .pipe(gulp.dest('_sites/' + options.project + '/dist/css'));
+      .pipe(gulp.dest(options.src.css));
   });
 };

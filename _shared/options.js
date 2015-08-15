@@ -1,6 +1,12 @@
 var yargs = require('yargs').argv;
+var project = yargs.project ? yargs.project : 'example';
+var config = yargs.config ? yargs.config : 'config-development.json';
 
 module.exports = {
-  project: yargs.project ? yargs.project : 'example',
-  config: yargs.config ? yargs.config : 'config-development.json'
+  project: project,
+  config: config,
+  src: {
+    sass: '_sites/' + project + '/src/assets/sass/**/*.sass',
+    css: '_sites/' + project + '/dist/css',
+  }
 };
