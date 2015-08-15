@@ -21,12 +21,14 @@
     "css-mqpacker": "^3.1.0",
     "csswring": "^3.0.5",
     "gulp": "^3.9.0",
+    "gulp-jshint": "^1.11.2",
     "gulp-load-plugins": "^1.0.0-rc.1",
     "gulp-notify": "^2.2.0",
     "gulp-postcss": "^5.1.10",
     "gulp-sass": "^2.0.4",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-task-loader": "^1.2.1",
+    "jshint-stylish": "^2.0.1",
     "yargs": "^3.19.0"
   }
 }
