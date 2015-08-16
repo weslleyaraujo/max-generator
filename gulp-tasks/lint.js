@@ -10,9 +10,11 @@ module.exports = function() {
 
   return gulp.task('lint', function() {
     return gulp.src(options.src.javascripts)
-      .pipe(plugins.jshintCached())
-      .pipe(plugins.jshintCached.reporter('jshint-stylish'))
+      .pipe(plugins.cached('linting'))
+      .pipe(plugins.jshint())
+      .pipe(plugins.jshint.reporter('jshint-stylish'))
       .pipe(plugins.notify(function(file){
+
         var errors;
 
         if(file.jshint.success) {
