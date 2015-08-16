@@ -8,5 +8,6 @@ module.exports = function() {
   return gulp.task('develop', function() {
     gulp.start('sass');
     gulp.watch(options.src.sass, ['sass']);
+    gulp.watch(options.src.javascripts, ['lint']);
   });
 };
