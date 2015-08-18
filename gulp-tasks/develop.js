@@ -9,5 +9,9 @@ module.exports = function() {
     gulp.start('sass');
     gulp.watch(options.src.sass, ['sass']);
     gulp.watch(options.src.javascripts, ['lint']);
+    gulp.watch([
+      options.src.pages,
+      options.src.templates,
+    ], ['ejs']);
   });
 };
