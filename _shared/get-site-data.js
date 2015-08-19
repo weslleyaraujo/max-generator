@@ -1,29 +1,41 @@
 var recursive = require('recursive-readdir');
+var dot = require('dot-object');
 var options = require('../_shared/options.js');
-var path = options.src.projectRoot + options.src.data;
 
-function getName(filename) {
-  return filename.replace(/.*\/data\//g, '');
+var PATH = options.src.root + options.src.data;
+var SRC = PATH.replace(/\/data/g, '');
+var RESULT = {};
+
+function createDotSource(value) {
+  return value
+    .replace(/\//g, '.')
+    .replace(/\.json/g, '');
 }
-function getJSON(filename) {
-  var name = getName(filename);
-  return require(filename);
+
+function getFileData(source) {
+  var itens = source.split(/\./);
+  var filename;
+
+  itens.shift();
+  filename = itens.join('/');
+
+  return require(PATH +  filename + '.json');
 }
 
-recursive(path, function(err, files) {
-  var regex = new RegExp(/\//);
+recursive(PATH, function(err, files) {
+  var source;
+  var data;
 
-  files = files.reduce(function (current, item) {
-    var name = getName(item);
-    current[name] = current[name] || {};
+  files.forEach(function (x) {
+    x = x.replace(SRC, '');
+    source = createDotSource(x);
+    data = getFileData(source);
 
-    if (regex.test(name)) {
+    dot.str(source, data, RESULT);
+  });
 
-    }
+  console.log(RESULT);
 
-    return current;
-
-  }, {});
-
-  console.log(files);
 });
+
+console.log('result aqui', RESULT);
