@@ -9,7 +9,7 @@ var options = require('../_shared/options.js');
 var data = require('../_shared/get-site-data.js');
 
 module.exports = function() {
-
+  console.log(options.src.root);
   return gulp.task('ejs', function() {
     return gulp.src(options.src.pages)
       .pipe(plugins.plumber())
