@@ -35,6 +35,7 @@
     "jshint-stylish": "^2.0.1",
     "lodash": "^3.10.1",
     "recursive-readdir": "^1.2.1",
+    "recursive-readdir-sync": "^1.0.6",
     "yargs": "^3.19.0"
   }
 }

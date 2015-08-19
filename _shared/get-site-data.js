@@ -1,10 +1,9 @@
-var recursive = require('recursive-readdir');
+var recursive = require('recursive-readdir-sync');
 var dot = require('dot-object');
 var options = require('../_shared/options.js');
 
 var PATH = options.src.root + options.src.data;
 var SRC = PATH.replace(/\/data/g, '');
-var RESULT = {};
 
 function createDotSource(value) {
   return value
@@ -22,20 +21,13 @@ function getFileData(source) {
   return require(PATH +  filename + '.json');
 }
 
-recursive(PATH, function(err, files) {
+module.exports = recursive(PATH).reduce(function (curr, x) {
   var source;
-  var data;
 
-  files.forEach(function (x) {
-    x = x.replace(SRC, '');
-    source = createDotSource(x);
-    data = getFileData(source);
+  x = x.replace(SRC, '');
+  source = createDotSource(x);
+  dot.str(source, getFileData(source), curr);
 
-    dot.str(source, data, RESULT);
-  });
+  return curr;
 
-  console.log(RESULT);
-
-});
-
-console.log('result aqui', RESULT);
+}, {});

@@ -6,16 +6,14 @@
 var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')();
 var options = require('../_shared/options.js');
-var getSiteData = require('../_shared/get-site-data.js');
+var data = require('../_shared/get-site-data.js');
 
 module.exports = function() {
 
   return gulp.task('ejs', function() {
     return gulp.src(options.src.pages)
       .pipe(plugins.plumber())
-      .pipe(plugins.ejs({
-        test: 'LOVELY DAY'
-      }).on('error', function(err) {
+      .pipe(plugins.ejs(data).on('error', function(err) {
         plugins.notify().write({
           title: 'Error compiling ejs.',
           message:  '' // err.message
