@@ -21,13 +21,21 @@ function getFileData(source) {
   return require(PATH +  filename + '.json');
 }
 
-module.exports = recursive(PATH).reduce(function (curr, x) {
-  var source;
+function isJSON(value) {
+  var regex = new RegExp(/\.json$/);
+  return regex.test(value);
+}
 
-  x = x.replace(SRC, '');
-  source = createDotSource(x);
-  dot.str(source, getFileData(source), curr);
+module.exports = recursive(PATH)
+  .filter(function (x) { return isJSON(x) })
+  .reduce(function (curr, x) {
 
-  return curr;
+    var source;
 
-}, {});
+    x = x.replace(SRC, '');
+    source = createDotSource(x);
+    dot.str(source, getFileData(source), curr);
+
+    return curr;
+
+  }, {});
