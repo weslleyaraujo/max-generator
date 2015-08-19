@@ -26,16 +26,20 @@ function isJSON(value) {
   return regex.test(value);
 }
 
-module.exports = recursive(PATH)
-  .filter(function (x) { return isJSON(x) })
-  .reduce(function (curr, x) {
+module.exports = function () {
+  console.log('site data!');
+  return recursive(PATH)
+    .filter(function (x) { return isJSON(x) })
+    .reduce(function (curr, x) {
 
-    var source;
+      var source;
 
-    x = x.replace(SRC, '');
-    source = createDotSource(x);
-    dot.str(source, getFileData(source), curr);
+      x = x.replace(SRC, '');
+      source = createDotSource(x);
+      dot.str(source, getFileData(source), curr);
 
-    return curr;
+      return curr;
 
-  }, {});
+    }, {});
+};
+

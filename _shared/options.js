@@ -8,6 +8,7 @@ module.exports = {
   config: config,
   src: {
     root: __dirname.replace(/\/_shared/g, '/'),
+    project: '_sites/' + project,
     javascripts: '_sites/' + project + '/src/assets/javascripts/**/*.js',
     sass: '_sites/' + project + '/src/assets/sass/**/*.sass',
     css: '_sites/' + project + '/dist/css',
