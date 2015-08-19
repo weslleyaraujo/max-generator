@@ -1,4 +1,8 @@
 # MAX generator
 
-![MAD MAX](./_shared/max.png)
+![MAD MAX](./max.png)
 
+Fury Road!
+
+
+*in development*
