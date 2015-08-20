@@ -1,5 +1,6 @@
 /*
- * TODO: Render specific file only
+ * FIX: When an error is triggered gulp-ejs (or ejs only) creates a
+ * .ejs file into the dest dir
  */
 'use strict';
 
@@ -11,19 +12,15 @@ var getData = require('../_shared/get-site-data.js');
 module.exports = function() {
   return gulp.task('ejs', function() {
     return gulp.src(options.src.pages)
-      .pipe(plugins.cached('ejs'))
       .pipe(plugins.plumber())
       .pipe(plugins.ejs(getData()).on('error', function(err) {
-
         plugins.notify().write({
           title: 'Error compiling ejs.',
-          message:  'Some error compiling ejs files'
+          /*
+           * NOTE: this split fixes an error when sending any "<%" to notify..
+           */
+          message:  err.message.split('<')[0] + '...'
         });
-
-        /*
-         * FIXME: Fix bug when trying to log an error with
-         * `<%=` characters, see: _sites/example/src/example.ejs
-         */
       }))
       .pipe(gulp.dest(options.src.project));
   });

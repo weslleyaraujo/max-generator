@@ -18,6 +18,8 @@ function getFileData(source) {
   itens.shift();
   filename = itens.join('/');
 
+  // delete cache to always get the updated file
+  delete require.cache[require.resolve(PATH +  filename + '.json')];
   return require(PATH +  filename + '.json');
 }
 
@@ -27,6 +29,7 @@ function isJSON(value) {
 }
 
 module.exports = function () {
+
   return recursive(PATH)
     .filter(function (x) { return isJSON(x) })
     .reduce(function (curr, x) {
