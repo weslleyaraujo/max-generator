@@ -10,7 +10,7 @@ module.exports = function() {
 
   return gulp.task('lint', function() {
     return gulp.src(options.src.javascripts)
-      .pipe(plugins.cached('linting'))
+      .pipe(plugins.cached('lint'))
       .pipe(plugins.jshint())
       .pipe(plugins.jshint.reporter('jshint-stylish'))
       .pipe(plugins.notify(function(file){

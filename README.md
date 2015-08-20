@@ -4,5 +4,8 @@
 
 Fury Road!
 
+<center>
+  ![LOVELY DAT](./lovely-day.png)
+</center>
 
 *in development*

@@ -10,11 +10,10 @@ var getData = require('../_shared/get-site-data.js');
 
 module.exports = function() {
   return gulp.task('ejs', function() {
-    console.log(getData());
     return gulp.src(options.src.pages)
+      .pipe(plugins.cached('ejs'))
       .pipe(plugins.plumber())
       .pipe(plugins.ejs(getData()).on('error', function(err) {
-        console.log(err);
 
         plugins.notify().write({
           title: 'Error compiling ejs.',

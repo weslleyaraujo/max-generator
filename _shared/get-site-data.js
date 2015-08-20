@@ -27,7 +27,6 @@ function isJSON(value) {
 }
 
 module.exports = function () {
-  console.log('site data!');
   return recursive(PATH)
     .filter(function (x) { return isJSON(x) })
     .reduce(function (curr, x) {
