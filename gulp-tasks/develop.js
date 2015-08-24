@@ -1,20 +1,16 @@
 'use strict';
 
-var gulp = require('gulp');
-var plugins = require('gulp-load-plugins')();
-var options = require('../_shared/options.js');
-
-module.exports = function() {
+module.exports = function(gulp, globals) {
   return gulp.task('develop', function() {
     gulp.start('sass');
 
-    gulp.watch(options.src.sass, ['sass']);
-    gulp.watch(options.src.javascripts, ['lint']);
+    gulp.watch(globals.options.src.sass, ['sass']);
+    gulp.watch(globals.options.src.javascripts, ['lint']);
 
     gulp.watch([
-      options.src.pages,
-      options.src.templates,
-      options.src.data + '**/*.json',
+      globals.options.src.pages,
+      globals.options.src.templates,
+      globals.options.src.data + '**/*.json',
     ], ['ejs']);
   });
 };
