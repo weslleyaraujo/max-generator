@@ -1,19 +1,15 @@
 'use strict';
 
-var gulp = require('gulp');
-var plugins = require('gulp-load-plugins')();
-var options = require('../_shared/options.js');
+module.exports = function(gulp, globals) {
 
-module.exports = function() {
-
-  plugins.notify.logLevel(0);
+  globals.plugins.notify.logLevel(0);
 
   return gulp.task('lint', function() {
-    return gulp.src(options.src.javascripts)
-      .pipe(plugins.cached('lint'))
-      .pipe(plugins.jshint())
-      .pipe(plugins.jshint.reporter('jshint-stylish'))
-      .pipe(plugins.notify(function(file){
+    return gulp.src(globals.options.src.javascripts)
+      .pipe(globals.plugins.cached('lint'))
+      .pipe(globals.plugins.jshint())
+      .pipe(globals.plugins.jshint.reporter('jshint-stylish'))
+      .pipe(globals.plugins.notify(function(file){
 
         var errors;
 

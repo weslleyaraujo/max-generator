@@ -1,18 +1,14 @@
 'use strict';
 
-var gulp = require('gulp');
-var plugins = require('gulp-load-plugins')();
-var options = require('../_shared/options.js');
-
-module.exports = function() {
+module.exports = function(gulp, globals) {
   gulp.task('sass', function() {
-    gulp.src(options.src.sass)
-      .pipe(plugins.sass().on('error', function(err) {
+    gulp.src(globals.options.src.sass)
+      .pipe(globals.plugins.sass().on('error', function(err) {
         plugins.notify().write({
           title: 'Error compiling sass.',
           message: err.message
         });
       }))
-      .pipe(gulp.dest(options.src.css));
+      .pipe(gulp.dest(globals.options.src.css));
   });
 };

@@ -4,13 +4,9 @@
 
 'use strict';
 
-var gulp = require('gulp');
-var plugins = require('gulp-load-plugins')();
-var options = require('../_shared/options.js');
-
-module.exports = function() {
+module.exports = function(gulp, globals) {
   return gulp.task('scaffold', function() {
     return gulp.src('_site-template/**')
-      .pipe(gulp.dest('_sites/' + options.project));
+      .pipe(gulp.dest('_sites/' + globals.options.project));
   });
 };
