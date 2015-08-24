@@ -2,9 +2,10 @@
 
 var gulp = require('gulp');
 var loader = require('gulp-multiple-loader');
-var plugins = require('gulp-load-plugins')();
+var plugins = require('gulp-load-plugins')({
+      pattern: ['gulp-*', 'browser-sync']
+    });
 
-// get project options
 var options = require('./_shared/options.js');
 
 loader.initialize(gulp, {

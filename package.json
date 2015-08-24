@@ -18,6 +18,7 @@
   "homepage": "https://github.com/igorapa/max-generator#readme",
   "devDependencies": {
     "autoprefixer": "^5.2.0",
+    "browser-sync": "^2.8.2",
     "css-mqpacker": "^3.1.0",
     "csswring": "^3.0.5",
     "dot-object": "^1.1.0",

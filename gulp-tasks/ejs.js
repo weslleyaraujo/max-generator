@@ -19,7 +19,9 @@ module.exports = function(gulp, globals) {
            */
           message:  err.message.split('<')[0] + '...'
         });
+
       }))
-      .pipe(gulp.dest(globals.options.src.project));
+      .pipe(gulp.dest(globals.options.src.project))
+      .pipe(globals.plugins.browserSync.stream());
   });
 };

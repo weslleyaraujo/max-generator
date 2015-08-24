@@ -19,6 +19,7 @@ module.exports = function(gulp, globals) {
       .pipe(globals.plugins.sourcemaps.init())
       .pipe(globals.plugins.postcss(processors))
       .pipe(globals.plugins.sourcemaps.write())
-      .pipe(gulp.dest(globals.options.src.css));
+      .pipe(gulp.dest(globals.options.src.css))
+      .pipe(globals.plugins.browserSync.stream());
   });
 };
