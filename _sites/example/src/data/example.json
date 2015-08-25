@@ -1,6 +1,6 @@
 {
-  "name": "MAx!",
-  "users": [
+  "mainTitle": "List of awesome something",
+  "itens": [
     {
       "name": "super foo",
       "age": "20"
