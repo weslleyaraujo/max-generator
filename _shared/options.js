@@ -9,7 +9,11 @@ module.exports = {
   src: {
     root: __dirname.replace(/\/_shared/g, '/'),
     project: '_sites/' + project,
-    javascripts: '_sites/' + project + '/src/assets/javascripts/**/*.js',
+    javascripts: {
+      main: '_sites/' + project + '/src/assets/javascripts/index.js',
+      dest: '_sites/' + project + '/dist/assets/javascripts/',
+      bundle: 'bundle.js',
+    },
     sass: '_sites/' + project + '/src/assets/sass/**/*.sass',
     css: '_sites/' + project + '/dist/css',
     templates: '_sites/' + project + '/src/templates/**/*.ejs',

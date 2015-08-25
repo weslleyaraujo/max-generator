@@ -18,7 +18,9 @@
   "homepage": "https://github.com/igorapa/max-generator#readme",
   "devDependencies": {
     "autoprefixer": "^5.2.0",
+    "babelify": "^6.2.0",
     "browser-sync": "^2.8.2",
+    "browserify": "^11.0.1",
     "css-mqpacker": "^3.1.0",
     "csswring": "^3.0.5",
     "dot-object": "^1.1.0",
@@ -35,6 +37,8 @@
     "gulp-sourcemaps": "^1.5.2",
     "jshint-stylish": "^2.0.1",
     "recursive-readdir-sync": "^1.0.6",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.3.1",
     "yargs": "^3.19.0"
   }
 }
