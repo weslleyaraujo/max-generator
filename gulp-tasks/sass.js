@@ -4,7 +4,7 @@ module.exports = function(gulp, globals) {
   gulp.task('sass', function() {
     gulp.src(globals.options.src.sass)
       .pipe(globals.plugins.sass().on('error', function(err) {
-        plugins.notify().write({
+        globals.plugins.notify().write({
           title: 'Error compiling sass.',
           message: err.message
         });
