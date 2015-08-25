@@ -5,22 +5,21 @@ var sourceStream = require('vinyl-source-stream');
 var babelify = require('babelify');
 var watchify = require('watchify');
 
-function reBundle(gulp, bundler, source, dest) {
-  bundler.bundle()
-    .on('error', function () {
-      console.log(arguments);
-    })
-    .pipe(sourceStream(source))
-    .pipe(gulp.dest(dest));
-}
-
 module.exports = function(gulp, globals) {
+
   var bundler;
 
+  function update() {
+    bundler.bundle()
+      .on('error', function (err) {
+        globals.plugins.util.log(err.toString());
+      })
+      .pipe(sourceStream(globals.options.src.javascripts.bundle))
+      // .pipe(globals.plugins.if, something())
+      .pipe(gulp.dest(globals.options.src.javascripts.dest));
+  };
+
   return gulp.task('javascripts', function() {
-    /*
-     * REFACTOR: dont know what is this
-     */
 
     bundler = browserify(globals.options.src.javascripts.main, {
       cache: {},
@@ -29,13 +28,13 @@ module.exports = function(gulp, globals) {
     }).transform(babelify)
 
     // watch
-    // bundler = watchify(bundler);
+    bundler = watchify(bundler);
 
     bundler.on('update', function () {
-      reBundle(gulp, bundler, globals.options.src.javascripts.bundle, globals.options.src.javascripts.dest);
-    }).on('log', function () { console.log('awesome log'); });
+      update();
+    }).on('log', globals.plugins.util.log);
 
-      reBundle(gulp, bundler, globals.options.src.javascripts.bundle, globals.options.src.javascripts.dest);
+    update();
 
   });
 };
