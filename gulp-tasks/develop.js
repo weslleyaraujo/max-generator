@@ -13,7 +13,9 @@ module.exports = function(gulp, globals) {
     // FIXME: should run all necessary tasks at beginin
     //
     gulp.watch(globals.options.src.sass, ['sass', 'postcss']);
-    gulp.watch(globals.options.src.javascripts, ['lint']);
+    gulp.watch(globals.options.src.javascripts.all, ['lint']);
+
+    gulp.tasks.javascripts.fn(true);
 
     gulp.watch([
       globals.options.src.pages,

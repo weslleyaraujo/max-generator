@@ -5,9 +5,11 @@ module.exports = function(gulp, globals) {
   globals.plugins.notify.logLevel(0);
 
   return gulp.task('lint', function() {
-    return gulp.src(globals.options.src.javascripts)
+    return gulp.src(globals.options.src.javascripts.all)
       .pipe(globals.plugins.cached('lint'))
-      .pipe(globals.plugins.jshint())
+      .pipe(globals.plugins.jshint({
+        esnext: true
+      }))
       .pipe(globals.plugins.jshint.reporter('jshint-stylish'))
       .pipe(globals.plugins.notify(function(file){
 

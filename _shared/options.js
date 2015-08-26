@@ -10,6 +10,7 @@ module.exports = {
     root: __dirname.replace(/\/_shared/g, '/'),
     project: '_sites/' + project,
     javascripts: {
+      all: '_sites/' + project + '/src/assets/javascripts/**/*.js',
       main: '_sites/' + project + '/src/assets/javascripts/index.js',
       dest: '_sites/' + project + '/dist/assets/javascripts/',
       bundle: 'bundle.js',
