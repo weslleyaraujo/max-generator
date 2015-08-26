@@ -1,4 +1,5 @@
 const isDog = (x) => x.type === 'dog';
+const isCat = (x) => x.type === 'cat';
 
 let animals = [
   { type: 'dog', name: 'Max' },
@@ -7,3 +8,4 @@ let animals = [
 ];
 
 let dogs = animals.filter(isDog);
+let cats = animals.filter(isCat);

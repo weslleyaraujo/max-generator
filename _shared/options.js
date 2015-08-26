@@ -6,6 +6,7 @@ var config = yargs.config ? yargs.config : 'config-development.json';
 module.exports = {
   project: project,
   config: config,
+  currentTask: null,
   src: {
     root: __dirname.replace(/\/_shared/g, '/'),
     project: '_sites/' + project,

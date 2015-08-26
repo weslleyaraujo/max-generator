@@ -1,12 +1,1 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/Users/weslley.araujo/workspace/max-generator/_sites/example/src/assets/javascripts/index.js":[function(require,module,exports){
-'use strict';
-
-var isDog = function isDog(x) {
-  return x.type === 'dog';
-};
-
-var animals = [{ type: 'dog', name: 'Max' }, { type: 'cat', name: 'Toy' }, { type: 'dog', name: 'Awesome' }];
-
-var dogs = animals.filter(isDog);
-
-},{}]},{},["/Users/weslley.araujo/workspace/max-generator/_sites/example/src/assets/javascripts/index.js"]);
+!function e(r,t,n){function s(o,i){if(!t[o]){if(!r[o]){var u="function"==typeof require&&require;if(!i&&u)return u(o,!0);if(a)return a(o,!0);var c=new Error("Cannot find module '"+o+"'");throw c.code="MODULE_NOT_FOUND",c}var f=t[o]={exports:{}};r[o][0].call(f.exports,function(e){var t=r[o][1][e];return s(t?t:e)},f,f.exports,e,r,t,n)}return t[o].exports}for(var a="function"==typeof require&&require,o=0;o<n.length;o++)s(n[o]);return s}({"/Users/weslley.araujo/workspace/max-generator/_sites/example/src/assets/javascripts/index.js":[function(e,r,t){"use strict";var n=function(e){return"dog"===e.type},s=function(e){return"cat"===e.type},a=[{type:"dog",name:"Max"},{type:"cat",name:"Toy"},{type:"dog",name:"Awesome"}];a.filter(n),a.filter(s)},{}]},{},["/Users/weslley.araujo/workspace/max-generator/_sites/example/src/assets/javascripts/index.js"]);
