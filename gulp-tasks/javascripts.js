@@ -1,3 +1,7 @@
+/*
+ * NOTE: This is the only task that runs diffently from the others
+ * this approach seemed to fit better in this case
+ * */
 'use strict';
 
 var browserify = require('browserify');
