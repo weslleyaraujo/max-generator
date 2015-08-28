@@ -24,8 +24,7 @@ function getFileData(source) {
 }
 
 function isJSON(value) {
-  var regex = new RegExp(/\.json$/);
-  return regex.test(value);
+  return /\.json$/.test(value);
 }
 
 module.exports = function () {
