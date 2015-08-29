@@ -7,10 +7,12 @@ var plugins = require('gulp-load-plugins')({
     });
 
 var options = require('./_shared/options.js');
+var utils = require('./_shared/utils.js');
 
 loader.initialize(gulp, {
   globals: {
     plugins: plugins,
     options: options,
+    utils: utils,
   }
 });

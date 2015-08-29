@@ -9,3 +9,5 @@ let animals = [
 
 let dogs = animals.filter(isDog);
 let cats = animals.filter(isCat);
+
+console.log(cats);

@@ -5,22 +5,19 @@ module.exports = function(gulp, globals) {
   return gulp.task('develop', function() {
     /*
      * NOTE: setting currentTask parameter as 'developer'
-     * in order to use it inside javascripts task
+     * in order to identify some task actions
      */
-    globals.options.currentTask = 'develop';
+    globals.utils.setCurrentTask('develop');
+
+    gulp.start(['ejs', 'sass', 'javascripts']);
 
     globals.plugins.browserSync.init({
       server: globals.options.src.root + globals.options.src.project,
-      tunnel: true,
       open: false
     });
 
-    // FIXME: should run all necessary tasks at beginin
     gulp.watch(globals.options.src.sass, ['sass', 'postcss']);
     gulp.watch(globals.options.src.javascripts.all, ['lint']);
-
-    gulp.start('javascripts');
-
     gulp.watch([
       globals.options.src.pages,
       globals.options.src.templates,
