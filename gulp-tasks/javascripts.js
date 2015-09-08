@@ -24,7 +24,8 @@ module.exports = function(gulp, globals, develop) {
       .pipe(globals.utils.isDevelop() ? globals.plugins.sourcemaps.init() : globals.plugins.util.noop())
       .pipe(globals.utils.isDevelop() ? globals.plugins.util.noop() : globals.plugins.uglify())
       .pipe(globals.utils.isDevelop() ? globals.plugins.sourcemaps.write() : globals.plugins.util.noop())
-      .pipe(gulp.dest(globals.options.src.javascripts.dest));
+      .pipe(gulp.dest(globals.options.src.javascripts.dest))
+      .pipe(globals.utils.isDevelop() ? globals.plugins.browserSync.stream() : globals.plugins.util.noop())
   };
 
   return gulp.task('javascripts', function() {
