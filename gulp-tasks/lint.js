@@ -8,7 +8,9 @@ module.exports = function(gulp, globals) {
     return gulp.src(globals.options.src.javascripts.all)
       .pipe(globals.plugins.cached('lint'))
       .pipe(globals.plugins.eslint())
-      .pipe(globals.plugins.eslint.format())
+      .pipe(globals.plugins.eslint.format({
+        useEslintrc: true
+      }))
       .pipe(globals.plugins.notify(function(file){
         var errors = []
         var filename = file.eslint.filePath.split('/');

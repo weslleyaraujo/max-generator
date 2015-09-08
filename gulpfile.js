@@ -16,3 +16,9 @@ loader.initialize(gulp, {
     utils: utils,
   }
 });
+
+process.on('SIGINT', function() {
+  plugins.util.log(plugins.util.colors.red('Successfully closed ' + process.pid));
+  process.exit(1);
+});
+

@@ -11,12 +11,13 @@ module.exports = function(gulp, globals) {
 
     gulp.start(['ejs', 'sass', 'javascripts']);
 
+    globals.plugins.browserSync.create();
     globals.plugins.browserSync.init({
       server: globals.options.src.root + globals.options.src.project,
       open: false
     });
 
-    gulp.watch(globals.options.src.sass, ['sass', 'postcss']);
+    gulp.watch(globals.options.src.sass, ['sass']);
     gulp.watch(globals.options.src.javascripts.all, ['lint']);
     gulp.watch([
       globals.options.src.pages,

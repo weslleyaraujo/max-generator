@@ -24,6 +24,8 @@ module.exports = function(gulp, globals) {
           title: 'Error compiling sass.',
           message: err.message
         });
+      }).on('error', function (err) {
+        globals.plugins.util.log(globals.plugins.util.colors.red(err.messageFormatted));
       }))
       .pipe(globals.plugins.postcss(processors))
       .pipe(globals.utils.isDevelop() ? globals.plugins.sourcemaps.write('.') : globals.plugins.util.noop())
