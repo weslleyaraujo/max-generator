@@ -33,7 +33,7 @@ module.exports = function(gulp, globals, develop) {
     bundler = browserify(globals.options.src.javascripts.main, {
       cache: {},
       packageCache: {},
-      fullPaths: true
+      fullPaths: false
     }).transform(babelify.configure({
       optional: ['es7']
     }));
