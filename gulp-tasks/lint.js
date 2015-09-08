@@ -7,26 +7,18 @@ module.exports = function(gulp, globals) {
   return gulp.task('lint', function() {
     return gulp.src(globals.options.src.javascripts.all)
       .pipe(globals.plugins.cached('lint'))
-      .pipe(globals.plugins.jshint({
-        esnext: true
-      }))
-      .pipe(globals.plugins.jshint.reporter('jshint-stylish'))
+      .pipe(globals.plugins.eslint())
+      .pipe(globals.plugins.eslint.format())
       .pipe(globals.plugins.notify(function(file){
+        var errors = []
+        var filename = file.eslint.filePath.split('/');
 
-        var errors;
+        file.eslint.messages.forEach(function (error) {
+          errors.push(['line: ', error.line, ' column: ', error.column, ': ', error.message].join(''));
+        });
 
-        if(file.jshint.success) {
-          return;
-        }
-
-        errors = file.jshint.results.map(function (data) {
-          if (data.error) {
-            return '(' + data.error.line + ':' + data.error.character + ') ' + data.error.reason;
-          }
-        }).join('\n');
-
-        return file.relative + ' => (' + file.jshint.results.length + ' errors) \n' + errors;
-
+        return errors.length ? (filename[filename.length - 1] + '\n' + errors.join('\n')) : false;
       }));
   });
+
 };
