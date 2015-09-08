@@ -1,11 +1,4 @@
-const isDog = (x) => x.type === 'dog';
-const isCat = (x) => x.type === 'cat';
+import React from 'react';
+import App from './components/app';
 
-let animals = [
-  { type: 'dog', name: 'Max' },
-  { type: 'cat', name: 'Toy' },
-  { type: 'dog', name: 'Awesome' },
-];
-
-let dogs = animals.filter(isDog);
-let cats = animals.filter(isCat);
+React.render(<App />, document.getElementById('awesome-app'));

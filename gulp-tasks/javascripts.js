@@ -34,7 +34,9 @@ module.exports = function(gulp, globals, develop) {
       cache: {},
       packageCache: {},
       fullPaths: true
-    }).transform(babelify);
+    }).transform(babelify.configure({
+      optional: ['es7']
+    }));
 
     /*
      * NOTE: the watchify will do the "watch" for js files
