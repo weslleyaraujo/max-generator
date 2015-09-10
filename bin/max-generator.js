@@ -6,7 +6,6 @@ var pkg = require( path.join(__dirname, '../package.json') );
 var program = require('commander');
 var ncp = require('ncp').ncp;
 var fullpath;
-= ;
 
 program
   .version(pkg.version)
@@ -14,14 +13,16 @@ program
   .option('-n', '--name <name>', 'The name for your project')
   .action(function (name) {
 
-    fullpath = path.join(path.dirname(fs.realpathSync(__filename)), name);
+    fullpath = process.cwd() + '/' + name;
 
-    ncp('../_template', fullpath, function (err) {
+    console.log(fullpath);
+
+    ncp('_template', fullpath, function (err) {
       if (err) {
-        return console.error(err);
+        return console.error('ERROR: ', err);
       }
 
-      console.log('done!\n');
+      console.log('DONE!\n');
       console.log('your project was created at ', fullpath);
     });
 
