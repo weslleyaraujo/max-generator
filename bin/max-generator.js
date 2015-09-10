@@ -1,15 +1,27 @@
 #!/usr/bin/env node
 
 var path = require('path');
+var fs = require('fs');
 var pkg = require( path.join(__dirname, '../package.json') );
 var program = require('commander');
+var ncp = require('ncp').ncp;
+var fullpath = path.join(path.dirname(fs.realpathSync(__filename)), name);
 
 program
   .version(pkg.version)
   .description(pkg.description)
   .option('-n', '--name <name>', 'The name for your project')
   .action(function (name) {
-    console.log('Creating your project at ' + name)
+
+    ncp('../_template', fullpath, function (err) {
+      if (err) {
+        return console.error(err);
+      }
+
+      console.log('done!\n');
+      console.log('your project was created at ', fullpath);
+    });
+
   })
   .parse(process.argv);
 
