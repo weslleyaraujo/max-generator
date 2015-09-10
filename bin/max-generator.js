@@ -5,13 +5,16 @@ var fs = require('fs');
 var pkg = require( path.join(__dirname, '../package.json') );
 var program = require('commander');
 var ncp = require('ncp').ncp;
-var fullpath = path.join(path.dirname(fs.realpathSync(__filename)), name);
+var fullpath;
+= ;
 
 program
   .version(pkg.version)
   .description(pkg.description)
   .option('-n', '--name <name>', 'The name for your project')
   .action(function (name) {
+
+    fullpath = path.join(path.dirname(fs.realpathSync(__filename)), name);
 
     ncp('../_template', fullpath, function (err) {
       if (err) {
