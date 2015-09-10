@@ -16,7 +16,7 @@
     "url": "https://github.com/igorapa/max-generator/issues"
   },
   "bin": {
-    "max-generator": "./bin/max-generator.js",
+    "max-generator": "./bin/max-generator.js"
   },
   "homepage": "https://github.com/igorapa/max-generator#readme",
   "devDependencies": {
