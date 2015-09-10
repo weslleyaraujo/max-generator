@@ -5,7 +5,8 @@ var fs = require('fs');
 var pkg = require( path.join(__dirname, '../package.json') );
 var program = require('commander');
 var ncp = require('ncp').ncp;
-var fullpath;
+var templatePath = path.join(path.dirname(fs.realpathSync(__filename)), '/../_template');
+var cwd = process.cwd() + '/';
 
 program
   .version(pkg.version)
@@ -13,17 +14,13 @@ program
   .option('-n', '--name <name>', 'The name for your project')
   .action(function (name) {
 
-    fullpath = process.cwd() + '/' + name;
-
-    console.log(fullpath);
-
-    ncp('_template', fullpath, function (err) {
+    ncp(templatePath, cwd + name, function (err) {
       if (err) {
-        return console.error('ERROR: ', err);
+        return console.error('[max-generator] ERROR: ', err);
       }
 
-      console.log('DONE!\n');
-      console.log('your project was created at ', fullpath);
+      console.log('[max-generator] DONE!\n');
+      console.log('[max-generator] your project was created at ', cwd, name);
     });
 
   })
