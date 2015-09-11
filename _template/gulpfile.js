@@ -6,8 +6,8 @@ var plugins = require('gulp-load-plugins')({
       pattern: ['gulp-*', 'browser-sync']
     });
 
-var options = require('./_shared/options.js');
-var utils = require('./_shared/utils.js');
+var options = require('./.max/options.js');
+var utils = require('./.max/utils.js');
 
 loader.initialize(gulp, {
   globals: {

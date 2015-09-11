@@ -4,7 +4,7 @@
  */
 'use strict';
 
-var getData = require('../_shared/get-site-data.js');
+var getData = require('../.max/get-site-data.js');
 
 module.exports = function(gulp, globals) {
 
@@ -12,6 +12,7 @@ module.exports = function(gulp, globals) {
     return gulp.src(globals.options.src.pages)
       .pipe(globals.plugins.plumber())
       .pipe(globals.plugins.ejs(getData()).on('error', function(err) {
+        globals.plugins.util.log(err);
         globals.plugins.notify().write({
           title: 'Error compiling ejs.',
           /*
@@ -21,7 +22,7 @@ module.exports = function(gulp, globals) {
         });
 
       }))
-      .pipe(gulp.dest(globals.options.src.project))
+      .pipe(gulp.dest(globals.options.src.root))
       .pipe(globals.plugins.browserSync.stream());
   });
 };

@@ -13,7 +13,7 @@ module.exports = function(gulp, globals) {
 
     globals.plugins.browserSync.create();
     globals.plugins.browserSync.init({
-      server: globals.options.src.root + globals.options.src.project,
+      server: globals.options.src.root,
       open: false
     });
 
