@@ -4,14 +4,14 @@
  */
 'use strict';
 
-var getData = require('../.max/get-site-data.js');
+var data = require('../.max/get-site-data.js')();
 
 module.exports = function(gulp, globals) {
 
   return gulp.task('ejs', function() {
     return gulp.src(globals.options.src.pages)
       .pipe(globals.plugins.plumber())
-      .pipe(globals.plugins.ejs(getData()).on('error', function(err) {
+      .pipe(globals.plugins.ejs(data.src).on('error', function(err) {
         globals.plugins.util.log(err);
         globals.plugins.notify().write({
           title: 'Error compiling ejs.',
