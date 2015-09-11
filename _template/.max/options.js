@@ -11,7 +11,7 @@ module.exports = {
     javascripts: {
       all: 'src/assets/javascripts/**/*.js',
       main: 'src/assets/javascripts/index.js',
-      dest: '/dist/assets/javascripts/',
+      dest: 'dist/assets/javascripts/',
       bundle: 'bundle.js',
     },
     sass: 'src/assets/sass/**/*.sass',
