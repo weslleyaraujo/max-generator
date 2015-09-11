@@ -1,6 +1,6 @@
 {
   "name": "max-generator",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "A fully functional static site generator",
   "main": "index.js",
   "scripts": {
