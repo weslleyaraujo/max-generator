@@ -13,14 +13,14 @@ program
   .description(pkg.description)
   .option('-n', '--name <name>', 'The name for your project')
   .action(function (name) {
-
+    console.log('[max-generator] Starting your project..');
     ncp(templatePath, cwd + name, function (err) {
       if (err) {
-        return console.error('[max-generator] ERROR: ', err);
+        return console.error('[max-generator] Error: ', err);
       }
 
-      console.log('[max-generator] DONE!\n');
-      console.log('[max-generator] your project was created at ', cwd, name);
+      console.log('[max-generator] Done!');
+      console.log('[max-generator] your project was created at ', cwd + name);
     });
 
   })
